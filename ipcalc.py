@@ -88,7 +88,7 @@ class IPCalc(NetworkCalculator):
 			print ("Subnet:",result)
 			return result
 		except ValueError:
-				print ("Check your ip or mask")
+				print ("Check your IP or mask")
 				return 0
 
 	'''range_ip is a method to find range of usable ip addresses for given subnet
