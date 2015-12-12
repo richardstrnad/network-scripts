@@ -27,7 +27,7 @@ class Arp(object):
 
 eth = Ethernet()
 eth.dst = b'\xff\xff\xff\xff\xff\xff'
-eth.src = b'\xe0\x9d\x31\x2e\xfe\x3c'
+eth.src = b'\xe0\x9d\x31\x2e\xfe\x3c' #Should match your NIC MAC
 eth.etype = 0x0806
 
 arp = Arp()
@@ -36,10 +36,10 @@ arp.ptype =0x0800 #2 bytes
 arp.hsize = 0x06  #1 byte
 arp.psize = 0x04  #1 byte
 arp.op = 0x01  #2 bytes
-arp.shwa = b'\xe0\x9d\x31\x2e\xfe\x3c'
-arp.spa = socket.inet_aton('192.168.0.56')
+arp.shwa = b'\xe0\x9d\x31\x2e\xfe\x3c' #Should match your NIC MAC
+arp.spa = socket.inet_aton('192.168.0.56')  #Should be yuor host IP
 arp.thwa = b'\x00\x00\x00\x00\x00\x00'
-arp.tpa = socket.inet_aton('192.168.0.38')
+arp.tpa = socket.inet_aton('192.168.0.38') #should be any IP from your network 
 arp.padd = b'\x49\x20\x6c\x6f\x76\x65\x20\x6e\x65\x74\x77\x6f\x72\x6b\x69\x6e\x67\x21'
 
 
@@ -50,7 +50,7 @@ arpf = struct.pack('!HHBBH6s4s6s4s18s',arp.htype,arp.ptype,arp.hsize,arp.psize,a
 packet = frame+arpf
 
 s = socket.socket(socket.PF_PACKET, socket.SOCK_RAW,socket.htons(0x800))
-s.bind(('wlan0',0))
+s.bind(('wlan0',0)) #Use interface of your choice
 
 s.send(packet)
 
