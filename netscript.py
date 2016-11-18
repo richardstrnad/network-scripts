@@ -13,7 +13,7 @@ import sys
 ''' Overall parser used in command line menu'''
 
 print(("="*64))
-print ("\tGrzegorz Wypych")
+print ("\tGrzegorz Wypych (horac)")
 print ("\tTested on Cisco CSR 1000v and Juniper vSRX")
 print(("="*64))
 print ("\t To stop the script please use CTRL+C")
